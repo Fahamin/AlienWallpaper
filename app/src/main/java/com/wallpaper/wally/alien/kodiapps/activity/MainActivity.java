@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
-      //  tabs.setTabMode(tabs.MODE_SCROLLABLE);
+        tabs.setTabMode(tabs.MODE_SCROLLABLE);
 
         favDatabase = Room.databaseBuilder(getApplicationContext(), FavDatabase.class, "alavdb").allowMainThreadQueries().build();
 

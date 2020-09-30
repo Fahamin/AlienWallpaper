@@ -1,7 +1,22 @@
 <resources>
     <string name="app_name">AlienWallpaper</string>
     <string name="tab_text_1">Alien</string>
-    <string name="tab_text_2">Bookmark</string>
+    <string name="tab_text_2">Water</string>
+    <string name="tab_text_3">NATURE</string>
+    <string name="tab_text_4">NECKLACE</string>
+    <string name="tab_text_5">GAME</string>
+    <string name="tab_text_6">FLOWER</string>
+    <string name="tab_text_7">SUPERHERO</string>
+    <string name="tab_text_8">WOMEN</string>
+    <string name="tab_text_9">ANIMAL</string>
+    <string name="tab_text_10">ANGLE</string>
+    <string name="tab_text_11">TECHNOLOGY</string>
+    <string name="tab_text_12">SCI FI</string>
+    <string name="tab_text_13">OCEAN</string>
+    <string name="tab_text_14">GHOST</string>
+    <string name="tab_text_15">FAVORITE</string>
+    <string name="tab_text_16">Page3</string>
+
     <string name="title_activity_details">DetailsActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

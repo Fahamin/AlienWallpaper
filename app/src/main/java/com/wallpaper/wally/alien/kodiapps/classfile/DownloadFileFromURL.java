@@ -44,7 +44,6 @@ public class DownloadFileFromURL extends AsyncTask<String, String, String> {
         super.onPreExecute();
 
             showProgress();
-
     }
 
     public void showProgress() {

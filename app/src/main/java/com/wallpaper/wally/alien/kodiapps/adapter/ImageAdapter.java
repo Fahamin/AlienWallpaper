@@ -13,16 +13,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
+import com.wallpaper.wally.alien.kodiapps.R;
 import com.wallpaper.wally.alien.kodiapps.activity.DetailsActivity;
 import com.wallpaper.wally.alien.kodiapps.activity.MainActivity;
-import com.wallpaper.wally.alien.kodiapps.R;
+import com.wallpaper.wally.alien.kodiapps.classfile.BitmapTransform;
 import com.wallpaper.wally.alien.kodiapps.model.FavModel;
 import com.wallpaper.wally.alien.kodiapps.model.ImageModel;
 
 import java.util.List;
 
 
-public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.MovieHolder>{
+public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.MovieHolder> {
+    private static final int MAX_WIDTH = 1200;
+    private static final int MAX_HEIGHT = 700;
+
 
     Context context;
     RecyclerView recyclerView;
@@ -54,12 +58,16 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.MovieHolder>
 
         final ImageModel imageModel = movieList.get(position);
 
-
-        Picasso.get().load(movieList.get(position).getL()).into(holder.imageThumble);
-
+        int size = (int) Math.ceil(Math.sqrt(MAX_WIDTH * MAX_HEIGHT));
 
 
-        if (MainActivity.favDatabase.favoriteDao().isFavorite(imageModel.getId()) == 1) {
+
+        Picasso.get().load(movieList.get(position).getL()).transform(new BitmapTransform(MAX_WIDTH,MAX_HEIGHT)).resize(size,size).centerInside()
+                .placeholder(R.drawable.progress_animation).
+                into(holder.imageThumble);
+
+
+        if (MainActivity.favDatabase.favoriteDao().isFavorite(imageModel.getI()) == 1) {
             holder.fav_btn.setImageResource(R.drawable.fav_red);
         } else {
             holder.fav_btn.setImageResource(R.drawable.fav_white);
@@ -72,7 +80,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.MovieHolder>
             public void onClick(View view) {
                 FavModel favModel = new FavModel();
 
-                int id = imageModel.getId();
+                int id = imageModel.getI();
 
                 String link = imageModel.getL();
 
@@ -97,8 +105,8 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.MovieHolder>
         holder.movie_Layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // Toast.makeText(context, movieList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
-               context.startActivity(new Intent(context, DetailsActivity.class).putExtra("link",imageModel.getL()));
+                // Toast.makeText(context, movieList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+                context.startActivity(new Intent(context, DetailsActivity.class).putExtra("link", imageModel.getL()));
             }
         });
     }
@@ -107,7 +115,6 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.MovieHolder>
     public int getItemCount() {
         return movieList.size();
     }
-
 
 
     public class MovieHolder extends RecyclerView.ViewHolder {

@@ -2,23 +2,23 @@ package com.wallpaper.wally.alien.kodiapps.model;
 
 public class ImageModel {
 
-    int id;
+    int i;
     String l;
 
     public ImageModel() {
     }
 
-    public ImageModel(int id, String link) {
-        this.id = id;
-        this.l = link;
+    public ImageModel(int i, String l) {
+        this.i = i;
+        this.l = l;
     }
 
-    public int getId() {
-        return id;
+    public int getI() {
+        return i;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setI(int i) {
+        this.i = i;
     }
 
     public String getL() {

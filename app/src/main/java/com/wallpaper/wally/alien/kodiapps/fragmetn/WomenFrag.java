@@ -1,6 +1,5 @@
 package com.wallpaper.wally.alien.kodiapps.fragmetn;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,57 +16,45 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
-import com.wallpaper.wally.alien.kodiapps.viewmodel.HomeViewModel;
 import com.wallpaper.wally.alien.kodiapps.R;
 import com.wallpaper.wally.alien.kodiapps.adapter.ImageAdapter;
 import com.wallpaper.wally.alien.kodiapps.model.ImageModel;
+import com.wallpaper.wally.alien.kodiapps.viewmodel.WomenViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.wallpaper.wally.alien.kodiapps.classfile.Utils.alienF;
-import static com.wallpaper.wally.alien.kodiapps.classfile.Utils.progressDialog;
+import static com.wallpaper.wally.alien.kodiapps.classfile.Utils.womenF;
 
-public class HomeFragment extends Fragment {
+public class WomenFrag extends Fragment {
+
     public static RecyclerView recyclerView;
     public static List<ImageModel> list;
-    private HomeViewModel mViewModel;
     ImageAdapter adapter;
 
-    public static HomeFragment newInstance() {
-        return new HomeFragment();
+    private WomenViewModel mViewModel;
+
+    public static WomenFrag newInstance() {
+        return new WomenFrag();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.home_fragment, container, false);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
-        // TODO: Use the ViewModel
+        return inflater.inflate(R.layout.women_fragment, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         list = new ArrayList<>();
-
-        progressDialog = new ProgressDialog(getContext());
-        progressDialog.setMessage("Loading Wally Please Wait...");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
         recyclerView = view.findViewById(R.id.birdsRecId);
 
         loadData();
     }
 
-
     private void loadData() {
-        alienF.addListenerForSingleValueEvent(new ValueEventListener() {
+        womenF.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list.clear();
@@ -82,14 +69,21 @@ public class HomeFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
                 // recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                 recyclerView.setAdapter(adapter);
-                progressDialog.dismiss();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(getContext(), "Loading Failed ! Check Network Connection", Toast.LENGTH_SHORT).show();
-                progressDialog.dismiss();
             }
         });
     }
+
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mViewModel = ViewModelProviders.of(this).get(WomenViewModel.class);
+        // TODO: Use the ViewModel
+    }
+
 }

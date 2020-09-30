@@ -9,17 +9,20 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Utils {
 
-    public static DatabaseReference birdsF = FirebaseDatabase.getInstance().getReference("Birds");
+    public static DatabaseReference neklessF = FirebaseDatabase.getInstance().getReference("nekless");
     public static DatabaseReference alienF = FirebaseDatabase.getInstance().getReference("alien");
-    public static DatabaseReference flowersF = FirebaseDatabase.getInstance().getReference("Flower");
-    public static DatabaseReference lekesF = FirebaseDatabase.getInstance().getReference("Lekes");
-    public static DatabaseReference riverF = FirebaseDatabase.getInstance().getReference("River");
-    public static DatabaseReference forestf = FirebaseDatabase.getInstance().getReference("forest");
-
-    public static DatabaseReference romanceF = FirebaseDatabase.getInstance().getReference("Romance");
-    public static DatabaseReference sportF = FirebaseDatabase.getInstance().getReference("Sport");
-    public static DatabaseReference thillerF = FirebaseDatabase.getInstance().getReference("Thiller");
-    public static DatabaseReference warF = FirebaseDatabase.getInstance().getReference("warMovie");
+    public static DatabaseReference waterF = FirebaseDatabase.getInstance().getReference("water");
+    public static DatabaseReference womenF = FirebaseDatabase.getInstance().getReference("women");
+    public static DatabaseReference angleF = FirebaseDatabase.getInstance().getReference("angle");
+    public static DatabaseReference animalF = FirebaseDatabase.getInstance().getReference("animal");
+    public static DatabaseReference flowerF = FirebaseDatabase.getInstance().getReference("flower");
+    public static DatabaseReference gameF = FirebaseDatabase.getInstance().getReference("game");
+    public static DatabaseReference gostF = FirebaseDatabase.getInstance().getReference("gost");
+    public static DatabaseReference natureF = FirebaseDatabase.getInstance().getReference("nature");
+    public static DatabaseReference ocanF = FirebaseDatabase.getInstance().getReference("ocan");
+    public static DatabaseReference scifiF = FirebaseDatabase.getInstance().getReference("scifi");
+    public static DatabaseReference superheroF = FirebaseDatabase.getInstance().getReference("superhero");
+    public static DatabaseReference techoF = FirebaseDatabase.getInstance().getReference("techo");
 
 
 
