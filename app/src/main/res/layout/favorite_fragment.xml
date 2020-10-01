@@ -22,7 +22,7 @@
         android:layout_centerVertical="true"
         android:text="No data found .. Add Favorite First"
         android:textAlignment="center"
-        android:textColor="#000"
+        android:textColor="#ffff"
         android:textSize="20sp"
         android:textStyle="normal"
         android:visibility="gone" />

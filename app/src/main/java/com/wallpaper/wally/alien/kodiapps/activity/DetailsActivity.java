@@ -37,8 +37,8 @@ public class DetailsActivity extends AppCompatActivity {
     String link;
     Boolean wall = false;
 
-    private static final int MAX_WIDTH = 1300;
-    private static final int MAX_HEIGHT = 800;
+    private static final int MAX_WIDTH = 1280;
+    private static final int MAX_HEIGHT = 720;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +65,7 @@ public class DetailsActivity extends AppCompatActivity {
         int size = (int) Math.ceil(Math.sqrt(MAX_WIDTH * MAX_HEIGHT));
 
 
-        Picasso.get().load(link).transform(new BitmapTransform(MAX_WIDTH,MAX_HEIGHT)).resize(size,size).centerInside()
+        Picasso.get().load(link).transform(new BitmapTransform(MAX_WIDTH,MAX_HEIGHT)).fit().centerInside()
                 .placeholder(R.drawable.progress_animation).
                 into(imageView);
 

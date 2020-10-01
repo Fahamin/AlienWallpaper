@@ -17,16 +17,20 @@ import com.squareup.picasso.Picasso;
 import com.wallpaper.wally.alien.kodiapps.activity.DetailsActivity;
 import com.wallpaper.wally.alien.kodiapps.activity.MainActivity;
 import com.wallpaper.wally.alien.kodiapps.R;
+import com.wallpaper.wally.alien.kodiapps.classfile.BitmapTransform;
 import com.wallpaper.wally.alien.kodiapps.model.FavModel;
 
 import java.util.List;
 
 
-public class FavAdapeter extends RecyclerView.Adapter<FavAdapeter.MovieHolder>  {
+public class FavAdapeter extends RecyclerView.Adapter<FavAdapeter.MovieHolder> {
 
     Context context;
     RecyclerView recyclerView;
     List<FavModel> movieList;
+    private static final int MAX_WIDTH = 1280;
+    private static final int MAX_HEIGHT = 720;
+
 
     public FavAdapeter(Context context, RecyclerView recyclerView, List<FavModel> movieList) {
         this.context = context;
@@ -45,7 +49,10 @@ public class FavAdapeter extends RecyclerView.Adapter<FavAdapeter.MovieHolder>  
     public void onBindViewHolder(@NonNull final MovieHolder holder, final int position) {
         final FavModel movieModel = movieList.get(position);
 
-        Picasso.get().load(movieList.get(position).getLink()).into(holder.imageThumble);
+        int size = (int) Math.ceil(Math.sqrt(MAX_WIDTH * MAX_HEIGHT));
+
+        Picasso.get().load(movieList.get(position).getLink()).transform(new BitmapTransform(MAX_WIDTH, MAX_HEIGHT))
+                .fit().centerInside().placeholder(R.drawable.progress_animation).into(holder.imageThumble);
 
         if (MainActivity.favDatabase.favoriteDao().isFavorite(movieModel.getId()) == 1) {
             holder.fav_btn.setImageResource(R.drawable.fav_red);
@@ -75,7 +82,6 @@ public class FavAdapeter extends RecyclerView.Adapter<FavAdapeter.MovieHolder>  
             }
         });
     }
-
 
 
     @Override

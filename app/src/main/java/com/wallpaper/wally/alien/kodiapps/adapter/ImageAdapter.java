@@ -24,8 +24,8 @@ import java.util.List;
 
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.MovieHolder> {
-    private static final int MAX_WIDTH = 1200;
-    private static final int MAX_HEIGHT = 700;
+    private static final int MAX_WIDTH = 720;
+    private static final int MAX_HEIGHT = 1280;
 
 
     Context context;
@@ -62,7 +62,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.MovieHolder>
 
 
 
-        Picasso.get().load(movieList.get(position).getL()).transform(new BitmapTransform(MAX_WIDTH,MAX_HEIGHT)).resize(size,size).centerInside()
+        Picasso.get().load(movieList.get(position).getL()).transform(new BitmapTransform(MAX_WIDTH,MAX_HEIGHT)).fit().centerInside()
                 .placeholder(R.drawable.progress_animation).
                 into(holder.imageThumble);
 
