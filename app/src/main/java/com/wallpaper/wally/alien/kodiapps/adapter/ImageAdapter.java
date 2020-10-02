@@ -23,8 +23,8 @@ import java.util.List;
 
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.MovieHolder> {
-    private static final int MAX_WIDTH = 1024;
-    private static final int MAX_HEIGHT = 768;
+    private static final int MAX_WIDTH = 720;
+    private static final int MAX_HEIGHT = 720;
 
     Context context;
     RecyclerView recyclerView;

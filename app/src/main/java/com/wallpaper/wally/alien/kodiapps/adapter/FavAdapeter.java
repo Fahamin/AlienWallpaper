@@ -28,8 +28,9 @@ public class FavAdapeter extends RecyclerView.Adapter<FavAdapeter.MovieHolder> {
     Context context;
     RecyclerView recyclerView;
     List<FavModel> movieList;
-    private static final int MAX_WIDTH = 1024;
-    private static final int MAX_HEIGHT = 768;
+
+    private static final int MAX_WIDTH = 720;
+    private static final int MAX_HEIGHT = 720;
 
 
     public FavAdapeter(Context context, RecyclerView recyclerView, List<FavModel> movieList) {
@@ -69,7 +70,7 @@ public class FavAdapeter extends RecyclerView.Adapter<FavAdapeter.MovieHolder> {
 
                 holder.fav_btn.setImageResource(R.drawable.fav_white);
                 MainActivity.favDatabase.favoriteDao().delete(movieModel);
-                Toast.makeText(context, "remove", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Remove ", Toast.LENGTH_SHORT).show();
 
 
             }

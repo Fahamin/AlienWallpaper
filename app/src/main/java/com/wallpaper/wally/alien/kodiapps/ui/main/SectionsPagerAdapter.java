@@ -15,6 +15,7 @@ import com.wallpaper.wally.alien.kodiapps.fragmetn.AnimalFrag;
 import com.wallpaper.wally.alien.kodiapps.fragmetn.Favorite;
 import com.wallpaper.wally.alien.kodiapps.fragmetn.FlowerFrag;
 import com.wallpaper.wally.alien.kodiapps.fragmetn.GameFrag;
+import com.wallpaper.wally.alien.kodiapps.fragmetn.GostFrag;
 import com.wallpaper.wally.alien.kodiapps.fragmetn.NatureFrag;
 import com.wallpaper.wally.alien.kodiapps.fragmetn.NeklessFrag;
 import com.wallpaper.wally.alien.kodiapps.fragmetn.OcanFrag;
@@ -86,7 +87,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             return new OcanFrag();
         }
         if (position == 13) {
-            return new GameFrag();
+            return new GostFrag();
         }
         if (position == 14) {
             return new Favorite();
