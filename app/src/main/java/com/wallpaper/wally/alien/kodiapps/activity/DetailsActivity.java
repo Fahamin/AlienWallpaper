@@ -19,6 +19,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.wallpaper.wally.alien.kodiapps.R;
 import com.wallpaper.wally.alien.kodiapps.classfile.BitmapTransform;
@@ -37,8 +38,8 @@ public class DetailsActivity extends AppCompatActivity {
     String link;
     Boolean wall = false;
 
-    private static final int MAX_WIDTH = 1280;
-    private static final int MAX_HEIGHT = 720;
+    private static final int MAX_WIDTH = 1024;
+    private static final int MAX_HEIGHT = 768;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,11 +64,25 @@ public class DetailsActivity extends AppCompatActivity {
         FloatingActionButton fabDownload = findViewById(R.id.fab_DownloadID);
 
         int size = (int) Math.ceil(Math.sqrt(MAX_WIDTH * MAX_HEIGHT));
+        Picasso.get().load(link).transform(new BitmapTransform(MAX_WIDTH,MAX_HEIGHT)).resize(size,size).centerInside()
+                .placeholder(R.drawable.progress_animation).fetch(new Callback() {
+            @Override
+            public void onSuccess() {
+                Picasso.get().load(link).transform(new BitmapTransform(MAX_WIDTH,MAX_HEIGHT)).fit().centerInside()
+                        .placeholder(R.drawable.progress_animation).
+                        into(imageView);
+            }
 
+            @Override
+            public void onError(Exception e) {
 
+            }
+
+        });
+/*
         Picasso.get().load(link).transform(new BitmapTransform(MAX_WIDTH,MAX_HEIGHT)).fit().centerInside()
                 .placeholder(R.drawable.progress_animation).
-                into(imageView);
+                into(imageView);*/
 
 
        // new ImageLoadTask(link, imageView).execute();

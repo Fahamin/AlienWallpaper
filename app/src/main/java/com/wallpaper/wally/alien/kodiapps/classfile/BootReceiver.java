@@ -16,6 +16,10 @@ import static androidx.constraintlayout.motion.widget.MotionScene.TAG;
 public class BootReceiver extends BroadcastReceiver {
 
     Bitmap bitmap;
+
+    public BootReceiver() {
+    }
+
     public BootReceiver(Bitmap bitmap) {
         this.bitmap = bitmap;
     }

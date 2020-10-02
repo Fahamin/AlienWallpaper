@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,9 +23,8 @@ import java.util.List;
 
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.MovieHolder> {
-    private static final int MAX_WIDTH = 720;
-    private static final int MAX_HEIGHT = 1280;
-
+    private static final int MAX_WIDTH = 1024;
+    private static final int MAX_HEIGHT = 768;
 
     Context context;
     RecyclerView recyclerView;
@@ -62,7 +60,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.MovieHolder>
 
 
 
-        Picasso.get().load(movieList.get(position).getL()).transform(new BitmapTransform(MAX_WIDTH,MAX_HEIGHT)).fit().centerInside()
+        Picasso.get().load(movieList.get(position).getL()).transform(new BitmapTransform(MAX_WIDTH,MAX_HEIGHT)).resize(size,size).centerInside()
                 .placeholder(R.drawable.progress_animation).
                 into(holder.imageThumble);
 
@@ -92,11 +90,9 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.MovieHolder>
                 if (MainActivity.favDatabase.favoriteDao().isFavorite(id) != 1) {
                     holder.fav_btn.setImageResource(R.drawable.fav_red);
                     MainActivity.favDatabase.favoriteDao().addData(favModel);
-                    Toast.makeText(context, "added", Toast.LENGTH_SHORT).show();
                 } else {
                     holder.fav_btn.setImageResource(R.drawable.fav_white);
                     MainActivity.favDatabase.favoriteDao().delete(favModel);
-                    Toast.makeText(context, "remove", Toast.LENGTH_SHORT).show();
                 }
 
 

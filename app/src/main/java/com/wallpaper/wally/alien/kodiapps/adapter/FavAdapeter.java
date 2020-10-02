@@ -28,8 +28,8 @@ public class FavAdapeter extends RecyclerView.Adapter<FavAdapeter.MovieHolder> {
     Context context;
     RecyclerView recyclerView;
     List<FavModel> movieList;
-    private static final int MAX_WIDTH = 1280;
-    private static final int MAX_HEIGHT = 720;
+    private static final int MAX_WIDTH = 1024;
+    private static final int MAX_HEIGHT = 768;
 
 
     public FavAdapeter(Context context, RecyclerView recyclerView, List<FavModel> movieList) {
