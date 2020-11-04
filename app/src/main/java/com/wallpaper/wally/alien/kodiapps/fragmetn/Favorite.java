@@ -14,11 +14,12 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.wallpaper.wally.alien.kodiapps.viewmodel.FavoriteViewModel;
 import com.wallpaper.wally.alien.kodiapps.R;
 import com.wallpaper.wally.alien.kodiapps.activity.MainActivity;
 import com.wallpaper.wally.alien.kodiapps.adapter.FavAdapeter;
+import com.wallpaper.wally.alien.kodiapps.classfile.Fun;
 import com.wallpaper.wally.alien.kodiapps.model.FavModel;
+import com.wallpaper.wally.alien.kodiapps.viewmodel.FavoriteViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,7 @@ public class Favorite extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        new Fun(getContext());
 
         emptyTxt = view.findViewById(R.id.notFoundTxt);
         recyclerView = view.findViewById(R.id.favRecviewID);

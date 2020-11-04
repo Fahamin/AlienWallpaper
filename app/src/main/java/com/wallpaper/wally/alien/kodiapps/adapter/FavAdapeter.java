@@ -22,6 +22,8 @@ import com.wallpaper.wally.alien.kodiapps.model.FavModel;
 
 import java.util.List;
 
+import static com.wallpaper.wally.alien.kodiapps.classfile.Fun.addShow;
+
 
 public class FavAdapeter extends RecyclerView.Adapter<FavAdapeter.MovieHolder> {
 
@@ -78,6 +80,7 @@ public class FavAdapeter extends RecyclerView.Adapter<FavAdapeter.MovieHolder> {
         holder.movie_Layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                addShow();
                 context.startActivity(new Intent(context, DetailsActivity.class).putExtra("link", movieModel.getLink()));
 
             }

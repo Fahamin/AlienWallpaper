@@ -29,7 +29,7 @@ public class BitmapTransform implements Transformation {
             targetWidth = (int) (targetHeight * aspectRatio);
         }
 
-        Bitmap result = Bitmap.createScaledBitmap(source, targetWidth, targetHeight, false);
+        Bitmap result = Bitmap.createScaledBitmap(source, targetWidth, targetHeight, true);
         if (result != source) {
             source.recycle();
         }

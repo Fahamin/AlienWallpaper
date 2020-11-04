@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.wallpaper.wally.alien.kodiapps.R;
 import com.wallpaper.wally.alien.kodiapps.adapter.ImageAdapter;
+import com.wallpaper.wally.alien.kodiapps.classfile.Fun;
 import com.wallpaper.wally.alien.kodiapps.model.ImageModel;
 import com.wallpaper.wally.alien.kodiapps.viewmodel.AnimalViewModel;
 
@@ -46,6 +47,8 @@ public class AnimalFrag extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         list = new ArrayList<>();
+        new Fun(getContext());
+
         recyclerView = view.findViewById(R.id.birdsRecId);
 
         loadData();
@@ -75,6 +78,7 @@ public class AnimalFrag extends Fragment {
             }
         });
     }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);

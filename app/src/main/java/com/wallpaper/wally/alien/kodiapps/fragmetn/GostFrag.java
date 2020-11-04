@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.wallpaper.wally.alien.kodiapps.R;
 import com.wallpaper.wally.alien.kodiapps.adapter.ImageAdapter;
+import com.wallpaper.wally.alien.kodiapps.classfile.Fun;
 import com.wallpaper.wally.alien.kodiapps.model.ImageModel;
 
 import java.util.ArrayList;
@@ -46,6 +47,7 @@ public class GostFrag extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         list = new ArrayList<>();
         recyclerView = view.findViewById(R.id.birdsRecId);
+        new Fun(getContext());
 
         loadData();
     }

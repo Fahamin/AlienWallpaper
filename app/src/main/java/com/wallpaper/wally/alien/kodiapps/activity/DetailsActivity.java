@@ -23,6 +23,7 @@ import com.squareup.picasso.Picasso;
 import com.wallpaper.wally.alien.kodiapps.R;
 import com.wallpaper.wally.alien.kodiapps.classfile.BitmapTransform;
 import com.wallpaper.wally.alien.kodiapps.classfile.DownloadFileFromURL;
+import com.wallpaper.wally.alien.kodiapps.classfile.Fun;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,6 +31,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import static androidx.constraintlayout.motion.widget.MotionScene.TAG;
+import static com.wallpaper.wally.alien.kodiapps.classfile.Fun.addShow;
 import static com.wallpaper.wally.alien.kodiapps.classfile.Utils.progressDialog;
 
 public class DetailsActivity extends AppCompatActivity {
@@ -56,6 +58,7 @@ public class DetailsActivity extends AppCompatActivity {
             actionBar.hide();
         }
         imageView = findViewById(R.id.fullImageID);
+        new Fun(this);
 
         link = getIntent().getStringExtra("link");
 
@@ -79,7 +82,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         });*/
 
-        Picasso.get().load(link).transform(new BitmapTransform(MAX_WIDTH,MAX_HEIGHT)).fit().centerInside()
+        Picasso.get().load(link).transform(new BitmapTransform(MAX_WIDTH,MAX_HEIGHT)).resize(512,512).centerInside()
                 .placeholder(R.drawable.progress_animation).
                 into(imageView);
 
@@ -106,6 +109,7 @@ public class DetailsActivity extends AppCompatActivity {
         fabDownload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                addShow();
                 new DownloadFileFromURL(DetailsActivity.this, link).execute(link);
             }
         });

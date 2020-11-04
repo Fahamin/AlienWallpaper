@@ -8,6 +8,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.wallpaper.wally.alien.kodiapps.R;
+import com.wallpaper.wally.alien.kodiapps.classfile.Fun;
 import com.wallpaper.wally.alien.kodiapps.database.FavDatabase;
 import com.wallpaper.wally.alien.kodiapps.ui.main.SectionsPagerAdapter;
 
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
         tabs.setTabMode(tabs.MODE_SCROLLABLE);
+        new Fun(this);
 
         favDatabase = Room.databaseBuilder(getApplicationContext(), FavDatabase.class, "alavdb").allowMainThreadQueries().build();
 

@@ -21,10 +21,12 @@ import com.wallpaper.wally.alien.kodiapps.model.ImageModel;
 
 import java.util.List;
 
+import static com.wallpaper.wally.alien.kodiapps.classfile.Fun.addShow;
+
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.MovieHolder> {
-    private static final int MAX_WIDTH = 720;
-    private static final int MAX_HEIGHT = 720;
+    private static final int MAX_WIDTH = 500;
+    private static final int MAX_HEIGHT = 500;
 
     Context context;
     RecyclerView recyclerView;
@@ -59,8 +61,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.MovieHolder>
         int size = (int) Math.ceil(Math.sqrt(MAX_WIDTH * MAX_HEIGHT));
 
 
-
-        Picasso.get().load(movieList.get(position).getL()).transform(new BitmapTransform(MAX_WIDTH,MAX_HEIGHT)).resize(size,size).centerInside()
+        Picasso.get().load(movieList.get(position).getL()).transform(new BitmapTransform(MAX_WIDTH, MAX_HEIGHT)).resize(size, size).centerInside()
                 .placeholder(R.drawable.progress_animation).
                 into(holder.imageThumble);
 
@@ -101,6 +102,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.MovieHolder>
         holder.movie_Layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                addShow();
                 // Toast.makeText(context, movieList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
                 context.startActivity(new Intent(context, DetailsActivity.class).putExtra("link", imageModel.getL()));
             }
